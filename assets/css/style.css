@@ -1,0 +1,58 @@
+/* CUSTOM STYLE */
+
+header .brand-logo {
+    margin: 1px 0px;
+    padding: 28px 54px;
+    line-height: 0;
+}
+main,
+footer {
+    padding-left: 240px;
+}
+h1.logo-wrapper {
+    margin: 0;
+}
+
+
+@media only screen and (max-width: 992px) {
+    header,
+    main,
+    footer {
+        padding-left: 0;
+    }
+}
+
+.sidenav {
+    top: 64px;
+    overflow: hidden;
+    height: 100%;
+    width: 240px;
+}
+
+
+
+h1 span.logo-text {
+    font-size: 26px;
+    padding-left: 8px;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.2s linear;
+}
+
+.sidenav .collapsible-header,
+.sidenav.fixed .collapsible-header {
+    padding: 0px 32px;
+    outline: 0;
+    outline-color: transparent;
+    outline-style: none;
+}
+
+.sidenav li>a {
+    font-size: 15px;
+}
+
+.task-add {
+    position: absolute;
+    right: 10px;
+    top: 76px;
+}

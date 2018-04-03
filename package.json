@@ -1,0 +1,30 @@
+{
+  "name": "electrondesktopapp",
+  "version": "1.0.0",
+  "description": "Desktop app per la gestione delle risorse per l'azienda Recusol",
+  "main": "main.js",
+  "dependencies": {
+    "electron": "^1.8.4",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "electron-packager": "^11.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/recusol.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Recusol Desktop App\"",
+    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WilliamTaruschio/ElectronDesktopApp.git"
+  },
+  "author": "William taruschio, Dante Domizi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WilliamTaruschio/ElectronDesktopApp/issues"
+  },
+  "homepage": "https://github.com/WilliamTaruschio/ElectronDesktopApp#readme"
+}

@@ -1,0 +1,156 @@
+<html ng-app="electronApp">
+
+<head>
+  <title>
+    Recusol App
+  </title>
+
+  <script>
+    window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.js');
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-route.js"></script>
+
+
+  <script src="app/app.js"></script>
+  <script src="app/controllers/prodottiController.js"></script>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+
+<body>
+  <header class="header">
+    <div class="navbar-fixed">
+      <nav>
+
+
+
+
+        <div class="nav-wrapper blue">
+          <ul class="left">
+            <li>
+              <h1 class="logo-wrapper">
+                <a href="index.html" class="brand-logo darken-1">
+                  <span class="logo-text hide-on-med-and-down">Recusol</span>
+                </a>
+              </h1>
+            </li>
+          </ul>
+
+          <ul class="right hide-on-med-and-down ">
+            <li>
+              <a href="sass.html">Sass</a>
+            </li>
+            <li>
+              <a href="badges.html">Components</a>
+            </li>
+            <!-- Dropdown Trigger -->
+            <li>
+              <!-- per far funzionare il dropdown ho dovuto cambiare da data-activates a data-target IMPORTANTE -->
+              <a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown
+                <i class="material-icons right">arrow_drop_down</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+          <li>
+            <a href="#!">one</a>
+          </li>
+          <li>
+            <a href="#!">two</a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="#!">three</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- FIXED SIDENAV  -->
+
+
+  <!-- -->
+  <ul id="slide-out" class="sidenav sidenav-fixed collapsible">
+    <li class="bold">
+      <a class=" waves-effect waves-cyan" href="#!/prodotti">
+        <span class="nav-text">Prodotti </span>
+
+      </a>
+
+    </li>
+    <li class="bold">
+      <a class=" waves-effect waves-cyan" href="#!/materieprime">
+        <span class="nav-text">Materie prime </span>
+      </a>
+
+
+    </li>
+    <li class="bold">
+      <a class=" waves-effect waves-cyan" href="#!/clienti">
+        <span class="nav-text">Clienti </span>
+      </a>
+
+
+    </li>
+    <li class="bold">
+      <a class=" waves-effect waves-cyan" href="#!/fornitori">
+        <span class="nav-text">Fornitori </span>
+
+      </a>
+
+    </li>
+    <li class="bold">
+      <a class="collapsible-header waves-effect waves-cyan">
+        <span class="nav-text">Fatture
+          <i class="material-icons right">chevron_right</i>
+        </span>
+
+      </a>
+      <div class="collapsible-body">
+        <ul>
+          <li class="active blue">
+            <a href="#/fattureacquisto">
+
+              <span>Acquisto</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/fatturevendita">
+
+              <span>Vendita</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+  </ul>
+  <a href="#" data-target="slide-out" class="sidenav-trigger">
+    <i class="material-icons">menu</i>
+  </a>
+
+
+  <main ng-view>
+
+  </main>
+
+
+
+</body>
+
+
+
+</html>
+<script>
+  var elem = document.querySelector('.collapsible');
+ $(elem).collapsible();
+ $('.dropdown-trigger').dropdown();
+</script>
