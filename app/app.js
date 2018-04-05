@@ -22,6 +22,18 @@ electronApp.config(['$routeProvider', function ($routeProvider) {
             templateUrl: './app/views/clienti.html',
             
         })
+        .when('/fornitori', {
+            templateUrl: './app/views/fornitori.html',
+            
+        })
+        .when('/fattureacquisto', {
+            templateUrl: './app/views/fattureacquisto.html',
+            
+        })
+        .when('/fatturevendita', {
+            templateUrl: './app/views/fatturevendita.html',
+            
+        })
         .otherwise({
             redirectTo: '/home'
         })

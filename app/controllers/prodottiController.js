@@ -1,48 +1,59 @@
 var prodotti = angular.module('prodotti', []);
 
 //controller dei prodotti
-prodotti.controller('prodottiCtrl', ['$scope', function ($scope) {
+prodotti.controller('prodottiCtrl', ['$scope', '$http', function ($scope,$http) {
 
     $scope.rimuoviProdotto = function (prodotto) {
         var prodottorimosso = $scope.prodotti.indexOf(prodotto);
         $scope.prodotti.splice(prodottorimosso, 1);
     }
-    $scope.aggiungiProdotto = function (prodotto) {
-        $scope.prodotti.push({
-            codice: 4,
-            nome: $scope.nuovoProdotto.nome,
-            descrizione: $scope.nuovoProdotto.descrizione,
-            prezzo: $scope.nuovoProdotto.prezzo
+   console.log('ciaoo');
+    $scope.getProdotti= function(){
+       
+        $http({
+            method: 'GET',
+            url: '#/getprodotti'
+        }).then(function successCallback(response) {
+            if(response.data){
+                console.log('prodotto : '+ response.data)
+              
+                $scope.prodotti=$scope.getProdotti();
+            }
+                else console.log('errore');
+
+                // Non faccio niente
+
         })
-        $scope.nuovoProdotto.nome="";
-        $scope.nuovoProdotto.descrizione="";
-        $scope.nuovoProdotto.prezzo="";
-    }
-
     
-    $scope.prodotti = [
+    };
+   
+    
+    
+    
+    $scope.aggiungiProdotto = function ($nuovoProdotto) {
+        console.log('prodotto da aggiungere:' + JSON.stringify($nuovoProdotto));
 
+        $http({
+            method: 'POST',
+            url: '#/aggiungiprodotto',
+            data: {
+                'prodotto': $nuovoProdotto
+            }
+        }).then(function successCallback(response) {
+            if(response.data){
+                console.log('prodotto : '+ response.data)
+                console.log('prodotto aggiunto!' + response.status);
+                $scope.prodotti=$scope.getProdotti();
+            }
+                else console.log('errore');
 
-        {
-            codice:1,
-            nome: "crema",
-            descrizione: "aaaaa",
-            prezzo: 18,
-        },
-        {
-            codice: 2,
-            nome: "siero",
-            descrizione: "aaaaa",
-            prezzo: 35,
-        },
-        {
-            codice: 3,
-            nome: "crema mani",
-            descrizione: "aaaaa",
-            prezzo: 12,
-        }
+                // Non faccio niente
 
-    ];
+        })
+    };
+
+ 
+
 
 
 }]);

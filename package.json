@@ -5,7 +5,10 @@
   "main": "main.js",
   "dependencies": {
     "electron": "^1.8.4",
-    "jquery": "^3.3.1"
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "mongodb": "^3.0.5",
+    "mongoose": "^5.0.12"
   },
   "devDependencies": {
     "electron-packager": "^11.2.0"

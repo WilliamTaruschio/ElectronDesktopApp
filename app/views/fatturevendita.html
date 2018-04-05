@@ -1,0 +1,125 @@
+<div ng-controller="prodottiCtrl">
+
+        <div class="title">
+            <h5>Fatture di vendita</h5>
+        </div>
+        <br>
+    
+        <div class="row">
+    
+            <ul class="collapsible" id="pannelloAggiungi">
+                <li>
+                    <div class="collapsible-header ">
+                        <i class="material-icons">add</i>Aggiungi una fattura di vendita</div>
+                    <div class="col s12 m6 l12 collapsible-body">
+                        <div class="card-panel #fff8e1 amber lighten-5">
+                            <div class="row">
+                                <form class="col s12" ng-submit="aggiungiProdotto()">
+                                    <div class="row">
+                                        <div class="input-field col s2">
+    
+                                            <input type="text" class="datepicker">
+                                            <label for="first_name">Data Fattura</label>
+                                        </div>
+                                        <div class="input-field col s2">
+                                            <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoProdotto.nome">
+                                            <label for="first_name">Nome Cliente</label>
+                                        </div>
+                                        <div class="file-field input-field col s3">
+                                            <div class="btn">
+                                                <span>File</span>
+                                                <input type="file" multiple>
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text" placeholder="inserisci fattura">
+                                            </div>
+                                        </div>
+    
+                                        <div class="input-field col s3">
+    
+                                            <button class="btn waves-effect waves-light #64dd17 light-green accent-4" type="submit" name="action">Aggiungi
+                                                <i class="material-icons right">send</i>
+                                            </button>
+    
+                                        </div>
+                                    </div>
+    
+                                </form>
+    
+                            </div>
+                        </div>
+                    </div>
+                </li>
+    
+            </ul>
+    
+    
+        </div>
+    
+        <div class="row">
+            <div class="col s12 m11">
+    
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Codice </th>
+                            <th>Data Fattura</th>
+                            <th>Nome Cliente</th>
+                            <th>Fattura</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+    
+                    <tbody>
+                        <tr ng-repeat="prodotto in prodotti">
+                            <td>{{prodotto.codice}}</td>
+                            <td>{{prodotto.nome}}</td>
+                            <td>{{prodotto.prezzo}} €</td>
+                            <td>
+                                <!-- Modal Trigger -->
+                                <button data-target="modal1" class="btn modal-trigger">Fattura</button>
+    
+                                <!-- Modal Structure -->
+                                <div id="modal1" class="modal">
+                                    <div class="modal-content">
+                                        <h4>Fattura</h4>
+                                        <iframe src="http://docs.google.com/gview?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true" style="width: 750px; height:600px;"
+                                            frameborder="0"></iframe>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                                    </div>
+                                </div>
+                            </td>
+    
+                            <td>
+                                <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light red gradient-shadow">
+                                    <i class="material-icons">delete</i>
+                                </a>
+                                <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light orange gradient-shadow">
+                                    <i class="material-icons">create</i>
+                                </a>
+                                <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light green gradient-shadow">
+                                    <i class="material-icons">help_outline</i>
+                                </a>
+                            </td>
+    
+                        </tr>
+                    </tbody>
+                </table>
+    
+    
+    
+            </div>
+        </div>
+    
+        <script>
+                $('.collapsible').collapsible();
+                $('select').formSelect();
+            
+            
+                $(document).ready(function () {
+                    $('.modal').modal();
+                    $('.datepicker').datepicker();
+                });
+            </script>

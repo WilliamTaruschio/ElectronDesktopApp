@@ -1,18 +1,103 @@
+<div ng-controller="prodottiCtrl">
 
-<ul class="collapsible">
-        <li>
-          <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
-      </ul>
-      <script>
-            $('.collapsible').collapsible();
-        </script>
+  <div class="title">
+    <h5>Clienti</h5>
+  </div>
+  <br>
+
+  <div class="row">
+
+    <ul class="collapsible" id="pannelloAggiungi">
+      <li>
+        <div class="collapsible-header ">
+          <i class="material-icons">add</i>Aggiungi un cliente</div>
+        <div class="col s12 m6 l12 collapsible-body">
+          <div class="card-panel #fff8e1 amber lighten-5">
+            <div class="row">
+              <form class="col s12" ng-submit="aggiungiProdotto()">
+                <div class="row">
+                  <div class="input-field col s2">
+                    <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoProdotto.nome">
+                    <label for="first_name">Nome Cliente</label>
+                  </div>
+                  <div class="input-field col s2">
+                    <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoProdotto.nome">
+                    <label for="first_name">Indirizzo</label>
+                  </div>
+                  <div class="input-field col s2">
+                    <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoProdotto.nome">
+                    <label for="first_name">P. IVA</label>
+                  </div>
+
+                  <div class="input-field col s1">
+                    <input id="prezzo" type="number" step="0.01" min="1" class="validate" ng-model="nuovoProdotto.prezzo">
+                    <label for="prezzo">Sconto</label>
+                  </div>
+                  <div class="input-field col s3">
+
+                    <button class="btn waves-effect waves-light #64dd17 light-green accent-4" type="submit" name="action">Aggiungi
+                      <i class="material-icons right">send</i>
+                    </button>
+
+                  </div>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+
+
+  </div>
+
+  <div class="row">
+    <div class="col s12 m11">
+
+      <table>
+        <thead>
+          <tr>
+            <th>Codice </th>
+            <th>Nome Cliente</th>
+            <th>Indirizzo</th>
+            <th>P. IVA</th>
+            <th>Sconto</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="prodotto in prodotti">
+            <td>{{prodotto.codice}}</td>
+            <td>{{prodotto.nome}}</td>
+            <td>{{prodotto.prezzo}} €</td>
+            <td>{{prodotto.nome}}</td>
+            <td>{{prodotto.prezzo}} €</td>
+            <td>
+              <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light red gradient-shadow">
+                <i class="material-icons">delete</i>
+              </a>
+              <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light orange gradient-shadow">
+                <i class="material-icons">create</i>
+              </a>
+              <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light green gradient-shadow">
+                <i class="material-icons">help_outline</i>
+              </a>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+
+
+
+    </div>
+  </div>
+ 
+
+<script>
+  $('.collapsible').collapsible();
+</script>

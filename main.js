@@ -1,6 +1,19 @@
 const electron = require('electron');
 const url = require('url');
 const path = require('path');
+var express = require('express');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+
+var ex=express();
+//bodyparser
+ex.use(bodyParser.urlencoded({
+    extended: true
+}));
+ex.use(bodyParser.json());
+
+
+
 
 // Module to control application life.
 const app = electron.app;
@@ -33,7 +46,7 @@ app.on('ready', function () {
         protocol: 'file:',
         slashes: true
     }));
-   
+
     // Open the devtools.
     // mainWindow.openDevTools();
     // Emitted when the window is closed.
@@ -45,3 +58,16 @@ app.on('ready', function () {
         mainWindow = null;
     });
 });
+
+//connessione mongoose
+mongoose.connect('mongodb://williamTaruschio:taruschio2@ds111124.mlab.com:11124/recusol')
+var db = mongoose.connection;
+//controllo connessione a mongodb
+db.once('open', function () {
+    console.log('connesso a mongodb');
+});
+db.on('error', function (err) {
+    console.log(err);
+});
+var routes = require('./route/routes');
+routes(ex,db);

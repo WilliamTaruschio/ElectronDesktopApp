@@ -14,7 +14,7 @@
         <div class="col s12 m6 l12 collapsible-body">
           <div class="card-panel #fff8e1 amber lighten-5">
             <div class="row">
-              <form class="col s12" ng-submit="aggiungiProdotto()">
+              <form class="col s12" ng-submit="aggiungiProdotto(nuovoProdotto)">
                 <div class="row">
                   <div class="input-field col s2">
                     <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoProdotto.nome">
@@ -78,7 +78,7 @@
         </thead>
 
         <tbody>
-          <tr ng-repeat="prodotto in prodotti">
+          <tr ng-repeat="prodotto in prodotti track by $index">
             <td>{{prodotto.codice}}</td>
             <td>{{prodotto.nome}}</td>
             <td>{{prodotto.prezzo}} €</td>
@@ -102,25 +102,7 @@
 
     </div>
   </div>
-  <div class="row">
 
-    <br>
-    <ul class="collapsible">
-
-      <li ng-repeat="prodotto in prodotti">
-        <div class="collapsible-header">
-          <div class="col s3">{{prodotto.codice}}</div>
-          <div class="col s3">{{prodotto.nome}}</div>
-          <div class="col s3">{{prodotto.prezzo}} €</div>
-        </div>
-
-        <div class="collapsible-body">
-          <span>descrizione : {{prodotto.descrizione}}</span>
-        </div>
-      </li>
-
-    </ul>
-  </div>
 </div>
 
 <script>
