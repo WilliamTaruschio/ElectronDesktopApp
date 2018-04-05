@@ -4,8 +4,10 @@ const path = require('path');
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var Prodotti = require('./models/Prodotti.js');
 
-var ex=express();
+
+var ex = express();
 //bodyparser
 ex.use(bodyParser.urlencoded({
     extended: true
@@ -60,6 +62,7 @@ app.on('ready', function () {
 });
 
 //connessione mongoose
+
 mongoose.connect('mongodb://williamTaruschio:taruschio2@ds111124.mlab.com:11124/recusol')
 var db = mongoose.connection;
 //controllo connessione a mongodb
@@ -69,5 +72,10 @@ db.once('open', function () {
 db.on('error', function (err) {
     console.log(err);
 });
+ex.use(function(req, res) {
+    res.sendFile(__dirname + 'index.html');
+});
 var routes = require('./route/routes');
-routes(ex,db);
+routes(ex, db);
+
+ex.listen(process.env.PORT || 8080);

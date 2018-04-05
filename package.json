@@ -5,6 +5,7 @@
   "main": "main.js",
   "dependencies": {
     "electron": "^1.8.4",
+    "electron-log": "^2.2.14",
     "express": "^4.16.3",
     "jquery": "^3.3.1",
     "mongodb": "^3.0.5",

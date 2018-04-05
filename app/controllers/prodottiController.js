@@ -1,58 +1,27 @@
 var prodotti = angular.module('prodotti', []);
+var log = require('electron-log');
+var CRUD=require('C:/Users/willi/ElectronDesktopApp/API/api.js')
 
 //controller dei prodotti
-prodotti.controller('prodottiCtrl', ['$scope', '$http', function ($scope,$http) {
+prodotti.controller('prodottiCtrl', ['$scope', '$http', function ($scope, $http) {
 
-    $scope.rimuoviProdotto = function (prodotto) {
-        var prodottorimosso = $scope.prodotti.indexOf(prodotto);
-        $scope.prodotti.splice(prodottorimosso, 1);
-    }
-   console.log('ciaoo');
-    $scope.getProdotti= function(){
-       
-        $http({
-            method: 'GET',
-            url: '#/getprodotti'
-        }).then(function successCallback(response) {
-            if(response.data){
-                console.log('prodotto : '+ response.data)
-              
-                $scope.prodotti=$scope.getProdotti();
-            }
-                else console.log('errore');
-
-                // Non faccio niente
-
-        })
     
-    };
+
    
+   log.info('ciao '+ CRUD.listaprodotti());
+    
+   $scope.prodotti = CRUD.listaprodotti();
+
     
     
     
-    $scope.aggiungiProdotto = function ($nuovoProdotto) {
-        console.log('prodotto da aggiungere:' + JSON.stringify($nuovoProdotto));
+    $scope.aggiungiProdotto =function(nuovoprodotto){
+        CRUD.aggiungiprodotto(nuovoprodotto);
+    }
+        
 
-        $http({
-            method: 'POST',
-            url: '#/aggiungiprodotto',
-            data: {
-                'prodotto': $nuovoProdotto
-            }
-        }).then(function successCallback(response) {
-            if(response.data){
-                console.log('prodotto : '+ response.data)
-                console.log('prodotto aggiunto!' + response.status);
-                $scope.prodotti=$scope.getProdotti();
-            }
-                else console.log('errore');
 
-                // Non faccio niente
 
-        })
-    };
-
- 
 
 
 
