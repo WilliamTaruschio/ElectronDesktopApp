@@ -5,6 +5,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Prodotti = require('./models/Prodotti.js');
+var morgan = require('morgan');
 
 
 var ex = express();
@@ -13,8 +14,14 @@ ex.use(bodyParser.urlencoded({
     extended: true
 }));
 ex.use(bodyParser.json());
+ex.use(morgan('dev'));
 
-
+var routes = require('./route/routes');
+routes(ex, db);
+ex.use('/',routes);
+ex.listen(8080,function () {
+    console.log('listening on port 3000...');
+});
 
 
 // Module to control application life.
@@ -72,10 +79,4 @@ db.once('open', function () {
 db.on('error', function (err) {
     console.log(err);
 });
-ex.use(function(req, res) {
-    res.sendFile(__dirname + 'index.html');
-});
-var routes = require('./route/routes');
-routes(ex, db);
 
-ex.listen(process.env.PORT || 8080);

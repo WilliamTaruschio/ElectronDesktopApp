@@ -79,11 +79,11 @@
 
         <tbody>
           <tr ng-repeat="prodotto in prodotti track by $index">
-            <td>{{prodotto.codice}}</td>
+            <td>{{prodotto._id}}</td>
             <td>{{prodotto.nome}}</td>
             <td>{{prodotto.prezzo}} €</td>
             <td>
-              <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light red gradient-shadow">
+              <a ng-click="eliminaProdotto(prodotto._id)" class="task-remove modal-trigger btn-floating waves-effect waves-light red gradient-shadow">
                 <i class="material-icons">delete</i>
               </a>
               <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light orange gradient-shadow">
