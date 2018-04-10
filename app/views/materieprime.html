@@ -104,22 +104,18 @@
                         <td>{{prodotto.codice}}</td>
                         <td>{{prodotto.nome}}</td>
                         <td>{{prodotto.prezzo}} €</td>
-                        <td>{{prodotto.codice}}</td>
+                        <td>
+                            <button data-target="modal2" class="btn-floating waves-effect waves-light modal-trigger">
+                                <i class="material-icons">description</i>
+                            </button>
+                        </td>
                         <td>
                             <!-- Modal Trigger -->
-                            <button data-target="modal1" class="btn modal-trigger">Scheda Sicurezza</button>
+                            <button data-target="modal1" class="btn-floating waves-effect waves-light modal-trigger">
+                                <i class="material-icons">description</i>
+                            </button>
 
-                            <!-- Modal Structure -->
-                            <div id="modal1" class="modal">
-                                <div class="modal-content">
-                                    <h4>Scheda Sicurezza</h4>
-                                    <iframe src="http://docs.google.com/gview?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true" style="width: 750px; height:600px;"
-                                        frameborder="0"></iframe>
-                                </div>
-                                <div class="modal-footer">
-                                    <a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-                                </div>
-                            </div>
+
                         </td>
                         <td>
                             <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light red gradient-shadow">
@@ -136,8 +132,28 @@
                     </tr>
                 </tbody>
             </table>
-
-          
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h4>Scheda Sicurezza</h4>
+                    <iframe src="http://docs.google.com/gview?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true" style="width: 750px; height:600px;"
+                        frameborder="0"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
+            </div>
+            <!-- Modal Structure -->
+            <div id="modal2" class="modal">
+                <div class="modal-content">
+                    <h4>Scheda Tecnica</h4>
+                    <iframe src="http://docs.google.com/gview?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true" style="width: 750px; height:600px;"
+                        frameborder="0"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -145,7 +161,5 @@
 <script>
     $('.collapsible').collapsible();
     $('select').formSelect();
-
-
-   
+    $('.modal').modal();
 </script>

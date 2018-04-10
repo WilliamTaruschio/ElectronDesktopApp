@@ -72,6 +72,7 @@
           <tr>
             <th>Codice Prodotto</th>
             <th>Nome Prodotto</th>
+            <th>Descrizione Prodotto</th>
             <th>Prezzo Prodotto</th>
             <th></th>
           </tr>
@@ -81,22 +82,16 @@
           <tr ng-repeat="prodotto in prodotti track by $index">
             <td>{{prodotto._id}}</td>
             <td>{{prodotto.nome}}</td>
+            <td>{{prodotto.descrizione}}</td>
             <td>{{prodotto.prezzo}} €</td>
             <td>
               <a ng-click="eliminaProdotto(prodotto._id)" class="task-remove btn-floating waves-effect waves-light red gradient-shadow">
                 <i class="material-icons">delete</i>
               </a>
-              <a data-target="modal" class="btn-floating modal-trigger waves-effect waves-light orange gradient-shadow">
+              <a ng-click="idProdottoDaModificare(prodotto._id)" data-target="modal" class="btn-floating modal-trigger waves-effect waves-light orange gradient-shadow">
                 <i class="material-icons">create</i>
               </a>
 
-
-
-
-
-              <a ng-click="rimuoviProdotto(prodotto)" class="task-remove btn-floating waves-effect waves-light green gradient-shadow">
-                <i class="material-icons">help_outline</i>
-              </a>
             </td>
 
           </tr>
@@ -107,11 +102,53 @@
       <!-- modal per la modifica del prodotto, questa struttura deve essere fuori dalla parte principale di codice -->
       <div id="modal" class="modal">
         <div class="modal-content">
-          <h4>Modal Header</h4>
-          <p>A bunch of text</p>
+          <h4>Modifica Prodotto</h4>
+          <!-- FORM modifica -->
+          <div class="row">
+            <form class="col s12" ng-submit="modificaProdotto(questoProdotto)">
+              <div class="row">
+                <div class="input-field col s2">
+                  <input id="nome_prodotto" type="text" class="validate" ng-model="questoProdotto.nome">
+                  <label for="first_name">Nome Prodotto</label>
+                </div>
+                <div class="input-field col s6">
+                  <textarea id="textarea1" class="materialize-textarea" ng-model="questoProdotto.descrizione"></textarea>
+                  <label for="textarea1">Descrizione</label>
+                </div>
+
+
+                <div class="file-field input-field col s3">
+                  <div class="btn">
+                    <span>File</span>
+                    <input type="file" multiple>
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="inserisci documento">
+                  </div>
+                </div>
+                <div class="input-field col s1">
+                  <input id="prezzo" type="number" step="0.01" min="1" class="validate" ng-model="questoProdotto.prezzo">
+                  <label for="prezzo">Prezzo</label>
+                </div>
+              </div>
+              <div class="row">
+
+                <div class="input-field col s3">
+
+                  <button class="btn waves-effect waves-light #64dd17 light-green accent-4" type="submit" name="action">Modifica
+                    <i class="material-icons right">send</i>
+                  </button>
+
+                </div>
+
+              </div>
+
+            </form>
+
+          </div>
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+          <a class="modal-action modal-close waves-effect waves-green btn-flat">Chiudi</a>
         </div>
       </div>
 
@@ -119,12 +156,10 @@
     </div>
   </div>
 
+
 </div>
 
 <script>
   $('.collapsible').collapsible();
-
-
-
   $('.modal').modal();
 </script>

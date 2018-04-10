@@ -1,3 +1,4 @@
+'use strict';
 const electron = require('electron');
 const url = require('url');
 const path = require('path');
@@ -6,7 +7,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Prodotti = require('./models/Prodotti.js');
 var morgan = require('morgan');
-
+require('electron-reload')(__dirname);
 
 var ex = express();
 //bodyparser
@@ -45,8 +46,8 @@ app.on('ready', function () {
 
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        width: 1200,
-        height: 800
+        width: 1400,
+        height: 1000
     });
 
     // and load the index.html of the app.

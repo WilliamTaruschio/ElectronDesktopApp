@@ -14,4 +14,6 @@ module.exports = function (app, db, req) {
         .post(api.aggiungiprodotto);
     app.route('/eliminaprodotto/:id')
         .delete(api.eliminaprodotto);
+    app.route('/modificaprodotto')
+        .put(api.modificaprodotto);
 };

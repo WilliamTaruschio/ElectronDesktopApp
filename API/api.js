@@ -48,3 +48,24 @@ exports.eliminaprodotto = function (req, res) {
         }
     });
 }
+exports.modificaprodotto = function (req, res) {
+    var query = {
+        _id: ObjectID(req.body._id)
+    }
+    var prodottomodificato = {
+        nome: req.body.dati.nome,
+        descrizione: req.body.dati.descrizione,
+        prezzo: req.body.dati.prezzo
+    }
+    log.info('id: ' + JSON.stringify(query));
+    log.info('dati prodotto: ' + JSON.stringify(prodottomodificato));
+    Prodotti.update(query, {
+        $set: prodottomodificato
+    }, function (err) {
+         if(err) log.info('non modificato'); // saved!
+       else{
+        res.status(201).json(prodottomodificato);
+       }
+    });
+  
+}
