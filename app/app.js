@@ -16,7 +16,7 @@ electronApp.config(['$routeProvider', function ($routeProvider) {
         })
         .when('/materieprime', {
             templateUrl: './app/views/materieprime.html',
-            controller: 'prodottiCtrl'
+            controller: 'materieprimeCtrl'
         })
         .when('/clienti', {
             templateUrl: './app/views/clienti.html',

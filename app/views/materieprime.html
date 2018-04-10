@@ -12,32 +12,32 @@
                 <div class="col s12 m6 l12 collapsible-body">
                     <div class="card-panel #fff8e1 amber lighten-5">
                         <div class="row">
-                            <form class="col s12" ng-submit="aggiungiProdotto()">
+                            <form class="col s12" ng-submit="aggiungiMateria()">
                                 <div class="row">
                                     <div class="input-field col s2">
-                                        <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoProdotto.nome">
+                                        <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoMateria.nome">
                                         <label for="first_name">Nome materia prima</label>
                                     </div>
                                     <div class="input-field col s4">
-                                        <textarea id="textarea1" class="materialize-textarea" ng-model="nuovoProdotto.descrizione"></textarea>
+                                        <textarea id="textarea1" class="materialize-textarea" ng-model="nuovoMateria.icni"></textarea>
                                         <label for="textarea1">Nome ICNI</label>
                                     </div>
                                     <div class="input-field col s2">
-                                        <input id="prezzo" type="number" step="0.01" min="1" class="validate" ng-model="nuovoProdotto.prezzo">
+                                        <input id="prezzo" type="number" step="0.01" min="1" class="validate" ng-model="nuovoMateria.confezione">
                                         <label for="prezzo">Confezione</label>
                                     </div>
                                     <div class="input-field col s2">
-                                        <input id="prezzo" type="number" step="0.01" min="1" class="validate" ng-model="nuovoProdotto.prezzo">
+                                        <input id="prezzo" type="number" step="0.01" min="1" class="validate" ng-model="nuovoMateria.prezzo">
                                         <label for="prezzo">Prezzo</label>
                                     </div>
                                     <div class="input-field col s2">
-                                        <select>
-                                            <option value="" disabled selected>Fornitore</option>
+                                        <select ng-model="nuovaMateria.fornitore">
+                                            <option value="" disabled >Fornitore</option>
                                             <option value="1">pippo</option>
                                             <option value="2">pluto</option>
                                             <option value="3">topolino</option>
                                         </select>
-                                        <label>Materialize Select</label>
+                                       
                                     </div>
 
 
@@ -46,7 +46,7 @@
                                     <div class="file-field input-field col s3">
                                         <div class="btn">
                                             <span>Scheda Tecnica</span>
-                                            <input type="file" multiple>
+                                            <input  type="file" multiple>
                                         </div>
                                     </div>
                                     <div class="file-field input-field col s3">
@@ -98,12 +98,12 @@
 
                 <tbody>
                     <tr ng-repeat="prodotto in prodotti">
-                        <td>{{prodotto.codice}}</td>
-                        <td>{{prodotto.nome}}</td>
-                        <td>{{prodotto.prezzo}} €</td>
-                        <td>{{prodotto.codice}}</td>
-                        <td>{{prodotto.nome}}</td>
-                        <td>{{prodotto.prezzo}} €</td>
+                        <td>{{materie.codice}}</td>
+                        <td>{{materie.nome}}</td>
+                        <td>{{materie.icni}} €</td>
+                        <td>{{materie.confezione}}</td>
+                        <td>{{materie.prezzo}} €</td>
+                        <td>{{materie.fornitore}}</td>
                         <td>
                             <button data-target="modal2" class="btn-floating waves-effect waves-light modal-trigger">
                                 <i class="material-icons">description</i>
