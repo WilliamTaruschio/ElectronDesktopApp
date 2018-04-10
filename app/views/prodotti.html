@@ -1,5 +1,5 @@
 <div ng-controller="prodottiCtrl">
-    
+
   <div class="title">
     <h5>Prodotti</h5>
   </div>
@@ -83,13 +83,18 @@
             <td>{{prodotto.nome}}</td>
             <td>{{prodotto.prezzo}} €</td>
             <td>
-              <a ng-click="eliminaProdotto(prodotto._id)" class="task-remove modal-trigger btn-floating waves-effect waves-light red gradient-shadow">
+              <a ng-click="eliminaProdotto(prodotto._id)" class="task-remove btn-floating waves-effect waves-light red gradient-shadow">
                 <i class="material-icons">delete</i>
               </a>
-              <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light orange gradient-shadow">
+              <a data-target="modal" class="btn-floating modal-trigger waves-effect waves-light orange gradient-shadow">
                 <i class="material-icons">create</i>
               </a>
-              <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light green gradient-shadow">
+
+
+
+
+
+              <a ng-click="rimuoviProdotto(prodotto)" class="task-remove btn-floating waves-effect waves-light green gradient-shadow">
                 <i class="material-icons">help_outline</i>
               </a>
             </td>
@@ -99,6 +104,17 @@
       </table>
 
 
+      <!-- modal per la modifica del prodotto, questa struttura deve essere fuori dalla parte principale di codice -->
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <h4>Modal Header</h4>
+          <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+      </div>
+
 
     </div>
   </div>
@@ -106,7 +122,9 @@
 </div>
 
 <script>
-   
+  $('.collapsible').collapsible();
 
- $('.collapsible').collapsible();
-  </script>
+
+
+  $('.modal').modal();
+</script>

@@ -20,7 +20,7 @@ var routes = require('./route/routes');
 routes(ex, db);
 ex.use('/',routes);
 ex.listen(8080,function () {
-    console.log('listening on port 3000...');
+    console.log('listening on port 8080...');
 });
 
 
