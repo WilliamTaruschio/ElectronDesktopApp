@@ -1,9 +1,9 @@
-var prodotti = angular.module('materieprime', []);
+var materie = angular.module('materie', []);
 var log = require('electron-log');
 
 
 //controller dei prodotti
-prodotti.controller('materieprimeCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+materie.controller('materieprimeCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
     var id;
     $scope.materie = getMaterieprime();
 
@@ -21,20 +21,20 @@ prodotti.controller('materieprimeCtrl', ['$scope', '$http', '$location', functio
             });
     }
 
-    $scope.aggiungiMateria = function ($nuovomateria) {
+    $scope.aggiungiMateria = function ($nuovaMateria) {
         $http({
                 url: 'http://localhost:8080' + '/aggiungimateria',
                 method: "POST",
-                data: $nuovomateria
+                data: $nuovaMateria
 
             })
             .then(function (response) {
 
                 log.info('prodotto appena aggiunto : ', response.data);
                 getMaterieprime();
-                $nuovomateria.nome = "";
-                $nuovomateria.descrizione = "";
-                $nuovomateria.prezzo = "";
+                $nuovaMateria.nome = "";
+                $nuovaMateria.descrizione = "";
+                $nuovaMateria.prezzo = "";
             });
 
 

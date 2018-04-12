@@ -17,9 +17,11 @@ ex.use(bodyParser.urlencoded({
 ex.use(bodyParser.json());
 ex.use(morgan('dev'));
 
-var routes = require('./route/routes');
-routes(ex, db);
-ex.use('/',routes);
+var routeProdotti = require('./route/routeProdotti');
+routeProdotti(ex, db);
+var routeMaterie = require('./route/routeMaterieprime');
+routeMaterie(ex, db);
+ex.use('/',routeProdotti);
 ex.listen(8080,function () {
     console.log('listening on port 8080...');
 });

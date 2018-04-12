@@ -4,7 +4,7 @@ module.exports = function (app, db, req) {
     var log = require('electron-log');
     var ObjectID = require("mongodb").ObjectID;
     var db;
-    var api = require('../API/api.js');
+    var api = require('../API/apiProdotti.js');
     api.setDb(db);
 
     log.info(db);
@@ -16,4 +16,5 @@ module.exports = function (app, db, req) {
         .delete(api.eliminaprodotto);
     app.route('/modificaprodotto')
         .put(api.modificaprodotto);
+
 };

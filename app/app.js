@@ -1,7 +1,7 @@
 // Qui andranno il modulo principale di angular e la sua configurazione con il route provider
 
 
-var electronApp = angular.module('electronApp', ['ngRoute','prodotti']);
+var electronApp = angular.module('electronApp', ['ngRoute','prodotti','materie']);
 
 electronApp.config(['$routeProvider', function ($routeProvider) {
 
