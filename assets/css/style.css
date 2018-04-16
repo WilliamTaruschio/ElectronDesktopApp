@@ -56,3 +56,6 @@ h1 span.logo-text {
     right: 10px;
     top: 76px;
 }
+#modalModifica { width: 75% !important ; max-height: 100% !important ; overflow-y: hidden !important ;}
+
+#modalfattura { width: 75% !important ; max-height: 85% !important ; overflow-y: hidden !important ;}

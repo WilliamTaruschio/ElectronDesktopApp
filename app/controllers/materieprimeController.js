@@ -33,8 +33,10 @@ materie.controller('materieprimeCtrl', ['$scope', '$http', '$location', function
                 log.info('prodotto appena aggiunto : ', response.data);
                 getMaterieprime();
                 $nuovaMateria.nome = "";
-                $nuovaMateria.descrizione = "";
+                $nuovaMateria.icni = "";
+                $nuovaMateria.confezione = "";
                 $nuovaMateria.prezzo = "";
+                $nuovaMateria.fornitore = "";           
             });
 
 
@@ -60,13 +62,13 @@ materie.controller('materieprimeCtrl', ['$scope', '$http', '$location', function
         id = $idmateria;
     }
 
-    $scope.modificaMateria = function ($questomateria) {
+    $scope.modificaMateria = function ($questaMateria) {
 
         $http({
                 url: 'http://localhost:8080' + '/modificamateria',
                 method: "PUT",
                 data: {
-                    dati: $questomateria,
+                    dati: $questaMateria,
                     _id: id
                 }
             })
@@ -74,7 +76,11 @@ materie.controller('materieprimeCtrl', ['$scope', '$http', '$location', function
 
                 log.info('materia appena modificato : ', response.data);
                 getMaterieprime();
-
+                $questaMateria.nome = "";
+                $questaMateria.icni = "";
+                $questaMateria.confezione = "";
+                $questaMateria.prezzo = "";
+                $questaMateria.fornitore = "";   
             });
 
 

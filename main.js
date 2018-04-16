@@ -21,6 +21,12 @@ var routeProdotti = require('./route/routeProdotti');
 routeProdotti(ex, db);
 var routeMaterie = require('./route/routeMaterieprime');
 routeMaterie(ex, db);
+var routeClienti = require('./route/routeClienti');
+routeClienti(ex, db);
+var routeFornitori = require('./route/routeFornitori');
+routeFornitori(ex, db);
+var routeAcquisto = require('./route/routeAcquisto');
+routeAcquisto(ex, db);
 ex.use('/',routeProdotti);
 ex.listen(8080,function () {
     console.log('listening on port 8080...');
@@ -48,10 +54,14 @@ app.on('ready', function () {
 
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        width: 1400,
-        height: 1000
+        show: false
     });
 
+    //mette l'applicazione a schermo intero 
+    mainWindow.maximize();
+    
+    
+    
     // and load the index.html of the app.
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'),

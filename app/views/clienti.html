@@ -14,23 +14,23 @@
         <div class="col s12 m6 l12 collapsible-body">
           <div class="card-panel #fff8e1 amber lighten-5">
             <div class="row">
-              <form class="col s12" ng-submit="aggiungiProdotto()">
+              <form class="col s12" ng-submit="aggiungiCliente(nuovoCliente)">
                 <div class="row">
                   <div class="input-field col s2">
-                    <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoProdotto.nome">
+                    <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoCliente.nome">
                     <label for="first_name">Nome Cliente</label>
                   </div>
                   <div class="input-field col s2">
-                    <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoProdotto.nome">
+                    <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoCliente.indirizzo">
                     <label for="first_name">Indirizzo</label>
                   </div>
                   <div class="input-field col s2">
-                    <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoProdotto.nome">
+                    <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoCliente.piva">
                     <label for="first_name">P. IVA</label>
                   </div>
 
                   <div class="input-field col s1">
-                    <input id="prezzo" type="number" step="0.01" min="1" class="validate" ng-model="nuovoProdotto.prezzo">
+                    <input id="prezzo" type="number" step="0.01" min="1" class="validate" ng-model="nuovoCliente.sconto">
                     <label for="prezzo">Sconto</label>
                   </div>
                   <div class="input-field col s3">
@@ -63,24 +63,24 @@
             <th>Codice </th>
             <th>Nome Cliente</th>
             <th>Indirizzo</th>
-            <th>P. IVA</th>
+            <th>P.IVA</th>
             <th>Sconto</th>
             <th></th>
           </tr>
         </thead>
 
         <tbody>
-          <tr ng-repeat="prodotto in prodotti">
-            <td>{{prodotto.codice}}</td>
-            <td>{{prodotto.nome}}</td>
-            <td>{{prodotto.prezzo}} €</td>
-            <td>{{prodotto.nome}}</td>
-            <td>{{prodotto.prezzo}} €</td>
+          <tr ng-repeat="cliente in clienti">
+            <td>{{cliente._id}}</td>
+            <td>{{cliente.nome}}</td>
+            <td>{{cliente.indirizzo}}</td>
+            <td>{{cliente.piva}}</td>
+            <td>{{cliente.sconto}} %</td>
             <td>
-              <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light red gradient-shadow">
+              <a ng-click="eliminaCliente(cliente._id)" class="task-remove modal-trigger btn-floating waves-effect waves-light red gradient-shadow">
                 <i class="material-icons">delete</i>
               </a>
-              <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light orange gradient-shadow">
+              <a ng-click="idClienteDaModificare(cliente._id)" data-target="modalModifica" class="task-remove modal-trigger btn-floating waves-effect waves-light orange gradient-shadow">
                 <i class="material-icons">create</i>
               </a>
               <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light green gradient-shadow">
@@ -91,6 +91,50 @@
           </tr>
         </tbody>
       </table>
+<!-- modal per la modifica del prodotto, questa struttura deve essere fuori dalla parte principale di codice -->
+<div id="modalModifica" class="modal">
+  <div class="modal-content">
+      <h4>Modifica Cliente </h4>
+      <div class="row">
+          <form class="col s12" ng-submit="modificaCliente(questoCliente)">
+              <div class="row">
+                  <div class="input-field col s2">
+                      <input id="nome_cliente" type="text" class="validate" ng-model="questoCliente.nome">
+                      <label for="first_name">Nome Cliente</label>
+                  </div>
+                  <div class="input-field col s4">
+                      <textarea id="textarea1" class="materialize-textarea" ng-model="questoCliente.indirizzo"></textarea>
+                      <label for="textarea1">Indirizzo</label>
+                  </div>
+                  <div class="input-field col s2">
+                      <input id="prezzo" type="text" class="validate" ng-model="questoCliente.piva">
+                      <label for="prezzo">P.IVA</label>
+                  </div>
+                  <div class="input-field col s2">
+                      <input id="sconto" type="number" step="0.01" min="1" class="validate" ng-model="questoCliente.sconto">
+                      <label for="sconto">Sconto</label>
+                  </div>
+                  
+              <div class="row">
+
+                  <div class="input-field col s3">
+
+                      <button class="btn waves-effect waves-light #64dd17 light-green accent-4" type="submit" name="action">Modifica
+                          <i class="material-icons right">send</i>
+                      </button>
+
+                  </div>
+
+              </div>
+
+          </form>
+
+      </div>
+  </div>
+  <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-green btn-flat">Chiudi</a>
+  </div>
+</div>
 
 
 
@@ -100,5 +144,6 @@
 
 <script>
   $('.collapsible').collapsible();
-  $('.modal').modal();
+    $('select').formSelect();
+    $('.modal').modal();
 </script>

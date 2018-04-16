@@ -14,15 +14,15 @@
                 <div class="col s12 m6 l12 collapsible-body">
                     <div class="card-panel #fff8e1 amber lighten-5">
                         <div class="row">
-                            <form class="col s12" ng-submit="aggiungiProdotto()">
+                            <form class="col s12" ng-submit="aggiungiFattura(nuovaFattura)">
                                 <div class="row">
                                     <div class="input-field col s2">
 
-                                        <input type="text" class="datepicker">
+                                        <input type="text" class="datepicker" ng-model="nuovaFattura.data">
                                         <label for="first_name">Data Fattura</label>
                                     </div>
                                     <div class="input-field col s2">
-                                        <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoProdotto.nome">
+                                        <input id="nome_prodotto" type="text" class="validate" ng-model="nuovaFattura.nome">
                                         <label for="first_name">Nome Fornitore</label>
                                     </div>
                                     <div class="file-field input-field col s3">
@@ -71,55 +71,86 @@
                 </thead>
 
                 <tbody>
-                    <tr ng-repeat="prodotto in prodotti">
-                        <td>{{prodotto.codice}}</td>
-                        <td>{{prodotto.nome}}</td>
-                        <td>{{prodotto.prezzo}} €</td>
+                    <tr ng-repeat="fattura in fatture">
+                        <td>{{fattura.codice}}</td>
+                        <td>{{fattura.data}}</td>
+                        <td>{{fattura.nome}}</td>
+
                         <td>
                             <!-- Modal Trigger -->
-                            <button data-target="modal1" class="btn modal-trigger">Fattura</button>
+                            <button data-target="modalfattura" class="btn modal-trigger">Fattura</button>
 
                             <!-- Modal Structure -->
-                           
+
                         </td>
 
                         <td>
-                            <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light red gradient-shadow">
+                            <a ng-click="eliminaFattura(fattura._id)" class="task-remove modal-trigger btn-floating waves-effect waves-light red gradient-shadow">
                                 <i class="material-icons">delete</i>
                             </a>
-                            <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light orange gradient-shadow">
+                            <a ng-click="idFatturaDaModificare(fattura._id)" data-target="modalModifica" class="task-remove modal-trigger btn-floating waves-effect waves-light orange gradient-shadow">
                                 <i class="material-icons">create</i>
-                            </a>
-                            <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light green gradient-shadow">
-                                <i class="material-icons">help_outline</i>
                             </a>
                         </td>
 
                     </tr>
                 </tbody>
             </table>
-
-            <div id="modal1" class="modal">
+            <!-- modal per la modifica del prodotto, questa struttura deve essere fuori dalla parte principale di codice -->
+            <div id="modalModifica" class="modal">
                 <div class="modal-content">
-                    <h4>Fattura</h4>
-                    <iframe src="http://docs.google.com/gview?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true" style="width: 750px; height:600px;"
-                        frameborder="0"></iframe>
-                </div>
-                <div class="modal-footer">
-                    <a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                    <h4>Modifica Fattura </h4>
+                    <div class="row">
+                        <form class="col s12" ng-submit="modificaFattura(questoFattura)">
+                            <div class="row">
+                                <div class="input-field col s2">
+
+                                    <input type="text" class="datepicker" ng-model="questaFattura.data">
+                                    <label for="first_name">Data Fattura</label>
+                                </div>
+                                <div class="input-field col s2">
+                                    <input id="nome_fornitore" type="text" class="validate" ng-model="questaFattura.nome">
+                                    <label for="first_name">Nome Fornitore</label>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="input-field col s3">
+
+                                        <button class="btn waves-effect waves-light #64dd17 light-green accent-4" type="submit" name="action">Modifica
+                                            <i class="material-icons right">send</i>
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                        </form>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="modal-action modal-close waves-effect waves-green btn-flat">Chiudi</a>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </div>
+        <div id="modalfattura" class="modal">
+            <div class="modal-content">
+                <h4>Fattura</h4>
+                <iframe src="http://docs.google.com/gview?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true" style="width: 1000px; height:400px;"
+                    frameborder="0"></iframe>
+            </div>
+            <div class="modal-footer">
+                <a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
 
-    <script>
+
+
+        <script>
             $('.collapsible').collapsible();
             $('select').formSelect();
-        
-        
-            $(document).ready(function () {
-                $('.modal').modal();
-                $('.datepicker').datepicker();
-            });
+            $('.modal').modal();
+            $('.datepicker').datepicker();
         </script>

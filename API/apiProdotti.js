@@ -52,6 +52,10 @@ exports.modificaprodotto = function (req, res) {
     var query = {
         _id: ObjectID(req.body._id)
     }
+    
+    if (req.body.dati.nome != "") nome = req.body.dati.nome;
+    if (req.body.dati.descrizione != "")  descrizione = req.body.dati.descrizione;
+    if (req.body.dati.prezzo != null)  prezzo = req.body.dati.prezzo;
     var prodottomodificato = {
         nome: req.body.dati.nome,
         descrizione: req.body.dati.descrizione,

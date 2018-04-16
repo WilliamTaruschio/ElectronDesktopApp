@@ -18,9 +18,9 @@ exports.aggiungimateria = function (req, res) {
         prezzo: req.body.prezzo,
         fornitore: req.body.fornitore
     });
-  
+
     nuovoMateria.save(function (err) {
-        if (err) log.info('non salvato :',err); // saved!
+        if (err) log.info('non salvato :', err); // saved!
         else {
             res.status(201).json(nuovoMateria);
         }
@@ -54,16 +54,23 @@ exports.modificamateria = function (req, res) {
     var query = {
         _id: ObjectID(req.body._id)
     }
+    log.info('dati grezzi: ' + JSON.stringify(req.body.dati));
+
+    if (req.body.dati.nome != "") nome = req.body.dati.nome;
+    if (req.body.dati.icni != "")  icni = req.body.dati.icni;
+    if (req.body.dati.confezione != null)  confezione = req.body.dati.confezione;
+    if (req.body.dati.prezzo != null)  prezzo = req.body.dati.prezzo;
+    if (req.body.dati.fornitore != "")  fornitore = req.body.dati.fornitore;
     var materiamodificato = {
-        nome: req.body.nome,
-        icni: req.body.icni,
-        confezione: req.body.confezione,
-        prezzo: req.body.prezzo,
-        fornitore: req.body.fornitore
+        nome: nome,
+        icni: icni,
+        confezione: confezione,
+        prezzo: prezzo,
+        fornitore: fornitore
     }
     log.info('id: ' + JSON.stringify(query));
-    log.info('dati prodotto: ' + JSON.stringify(materiamodificato));
-    Prodotti.update(query, {
+    log.info('dati materia: ' + JSON.stringify(materiamodificato));
+    Materie.update(query, {
         $set: materiamodificato
     }, function (err) {
         if (err) log.info('non modificato'); // saved!

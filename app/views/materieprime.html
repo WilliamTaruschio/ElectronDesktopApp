@@ -33,9 +33,9 @@
                                     <div class="input-field col s2">
                                         <select ng-model="nuovaMateria.fornitore">
                                             <option value="" disabled>Fornitore</option>
-                                            <option value="1">pippo</option>
-                                            <option value="2">pluto</option>
-                                            <option value="3">topolino</option>
+                                            <option value="pippo">pippo</option>
+                                            <option value="pluto">pluto</option>
+                                            <option value="topolino">topolino</option>
                                         </select>
 
                                     </div>
@@ -118,10 +118,10 @@
 
                         </td>
                         <td>
-                            <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light red gradient-shadow">
+                            <a ng-click="eliminaMateria(materia._id)" class="task-remove modal-trigger btn-floating waves-effect waves-light red gradient-shadow">
                                 <i class="material-icons">delete</i>
                             </a>
-                            <a ng-click="" data-target="modal3" class="task-remove modal-trigger btn-floating waves-effect waves-light orange gradient-shadow">
+                            <a ng-click="idMateriaDaModificare(materia._id)" data-target="modalModifica" class="task-remove modal-trigger btn-floating waves-effect waves-light orange gradient-shadow">
                                 <i class="material-icons">create</i>
                             </a>
                             <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light green gradient-shadow">
@@ -155,37 +155,38 @@
                 </div>
             </div>
             <!-- modal per la modifica del prodotto, questa struttura deve essere fuori dalla parte principale di codice -->
-            <div id="modal3" class="modal">
+            <div id="modalModifica" class="modal">
                 <div class="modal-content">
-                    <h4>Modifica Prodotto</h4>
+                    <h4>Modifica Materia Prima</h4>
                     <!-- FORM modifica -->
                     <div class="row">
-                        <form class="col s12" ng-submit="modificaProdotto(questoProdotto)">
+                        <form class="col s12" ng-submit="modificaMateria(questaMateria)">
                             <div class="row">
                                 <div class="input-field col s2">
-                                    <input id="nome_prodotto" type="text" class="validate" ng-model="questoProdotto.nome">
+                                    <input id="nome_prodotto" type="text" class="validate" ng-model="questaMateria.nome">
                                     <label for="first_name">Nome Prodotto</label>
                                 </div>
-                                <div class="input-field col s6">
-                                    <textarea id="textarea1" class="materialize-textarea" ng-model="questoProdotto.descrizione"></textarea>
-                                    <label for="textarea1">Descrizione</label>
+                                <div class="input-field col s4">
+                                    <textarea id="textarea1" class="materialize-textarea" ng-model="questaMateria.icni"></textarea>
+                                    <label for="textarea1">Nome ICNI</label>
                                 </div>
-
-
-                                <div class="file-field input-field col s3">
-                                    <div class="btn">
-                                        <span>File</span>
-                                        <input type="file" multiple>
-                                    </div>
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" placeholder="inserisci documento">
-                                    </div>
+                                <div class="input-field col s2">
+                                    <input id="prezzo" type="number" step="0.01" min="1" class="validate" ng-model="questaMateria.confezione">
+                                    <label for="prezzo">Confezione</label>
                                 </div>
-                                <div class="input-field col s1">
-                                    <input id="prezzo" type="number" step="0.01" min="1" class="validate" ng-model="questoProdotto.prezzo">
+                                <div class="input-field col s2">
+                                    <input id="prezzo" type="number" step="0.01" min="1" class="validate" ng-model="questaMateria.prezzo">
                                     <label for="prezzo">Prezzo</label>
                                 </div>
-                            </div>
+                                <div class="input-field col s2">
+                                    <select ng-model="questaMateria.fornitore">
+                                        <option value="" disabled>Fornitore</option>
+                                        <option value="pippo">pippo</option>
+                                        <option value="pluto">pluto</option>
+                                        <option value="topolino">topolino</option>
+                                    </select>
+
+                                </div>
                             <div class="row">
 
                                 <div class="input-field col s3">

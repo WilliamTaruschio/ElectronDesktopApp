@@ -1,99 +1,146 @@
 <div ng-controller="prodottiCtrl">
 
-    <div class="title">
-      <h5>Fornitori</h5>
-    </div>
-    <br>
-  
-    <div class="row">
-  
-      <ul class="collapsible" id="pannelloAggiungi">
-        <li>
-          <div class="collapsible-header ">
-            <i class="material-icons">add</i>Aggiungi un fornitore</div>
-          <div class="col s12 m6 l12 collapsible-body">
-            <div class="card-panel #fff8e1 amber lighten-5">
-              <div class="row">
-                <form class="col s12" ng-submit="aggiungiProdotto()">
-                  <div class="row">
-                    <div class="input-field col s2">
-                      <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoProdotto.nome">
-                      <label for="first_name">Nome Fornitore</label>
-                    </div>
-                    <div class="input-field col s2">
-                      <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoProdotto.nome">
-                      <label for="first_name">Indirizzo</label>
-                    </div>
-                    <div class="input-field col s2">
-                      <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoProdotto.nome">
-                      <label for="first_name">P. IVA</label>
-                    </div>
-  
-                    <div class="input-field col s3">
-  
-                      <button class="btn waves-effect waves-light #64dd17 light-green accent-4" type="submit" name="action">Aggiungi
-                        <i class="material-icons right">send</i>
-                      </button>
-  
-                    </div>
+  <div class="title">
+    <h5>Fornitori</h5>
+  </div>
+  <br>
+
+  <div class="row">
+
+    <ul class="collapsible" id="pannelloAggiungi">
+      <li>
+        <div class="collapsible-header ">
+          <i class="material-icons">add</i>Aggiungi un fornitore</div>
+        <div class="col s12 m6 l12 collapsible-body">
+          <div class="card-panel #fff8e1 amber lighten-5">
+            <div class="row">
+              <form class="col s12" ng-submit="aggiungiFornitore(nuovoFornitore)">
+                <div class="row">
+                  <div class="input-field col s2">
+                    <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoFornitore.nome">
+                    <label for="first_name">Nome Fornitore</label>
                   </div>
-  
-                </form>
-  
-              </div>
+                  <div class="input-field col s2">
+                    <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoFornitore.indirizzo">
+                    <label for="first_name">Indirizzo</label>
+                  </div>
+                  <div class="input-field col s2">
+                    <input id="nome_prodotto" type="text" class="validate" ng-model="nuovoFornitore.piva">
+                    <label for="first_name">P. IVA</label>
+                  </div>
+
+                  <div class="input-field col s3">
+
+                    <button class="btn waves-effect waves-light #64dd17 light-green accent-4" type="submit" name="action">Aggiungi
+                      <i class="material-icons right">send</i>
+                    </button>
+
+                  </div>
+                </div>
+
+              </form>
+
             </div>
           </div>
-        </li>
-  
-      </ul>
-  
-  
-    </div>
-  
-    <div class="row">
-      <div class="col s12 m11">
-  
-        <table>
-          <thead>
-            <tr>
-              <th>Codice </th>
-              <th>Nome Fornitore</th>
-              <th>Indirizzo</th>
-              <th>P. IVA</th>
-              
-              <th></th>
-            </tr>
-          </thead>
-  
-          <tbody>
-            <tr ng-repeat="prodotto in prodotti">
-              <td>{{prodotto.codice}}</td>
-              <td>{{prodotto.nome}}</td>
-              <td>{{prodotto.prezzo}} €</td>
-              <td>{{prodotto.nome}}</td>
-              
-              <td>
-                <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light red gradient-shadow">
-                  <i class="material-icons">delete</i>
-                </a>
-                <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light orange gradient-shadow">
-                  <i class="material-icons">create</i>
-                </a>
-                <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light green gradient-shadow">
-                  <i class="material-icons">help_outline</i>
-                </a>
-              </td>
-  
-            </tr>
-          </tbody>
-        </table>
-  
-  
-  
+        </div>
+      </li>
+
+    </ul>
+
+
+  </div>
+
+  <div class="row">
+    <div class="col s12 m11">
+
+      <table>
+        <thead>
+          <tr>
+            <th>Codice </th>
+            <th>Nome Fornitore</th>
+            <th>Indirizzo</th>
+            <th>P. IVA</th>
+
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="fornitore in fornitori">
+            <td>{{fornitore._id}}</td>
+            <td>{{fornitore.nome}}</td>
+            <td>{{fornitore.indirizzo}}</td>
+            <td>{{fornitore.piva}}</td>
+
+            <td>
+              <a ng-click="eliminaFornitore(fornitore._id)" class="task-remove modal-trigger btn-floating waves-effect waves-light red gradient-shadow">
+                <i class="material-icons">delete</i>
+              </a>
+              <a ng-click="idFornitoreDaModificare(fornitore._id)" data-target="modalModifica" class="task-remove modal-trigger btn-floating waves-effect waves-light orange gradient-shadow">
+                <i class="material-icons">create</i>
+              </a>
+              <a ng-click="rimuoviProdotto(prodotto)" class="task-remove modal-trigger btn-floating waves-effect waves-light green gradient-shadow">
+                <i class="material-icons">help_outline</i>
+              </a>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- modal per la modifica del prodotto, questa struttura deve essere fuori dalla parte principale di codice -->
+      <div id="modalModifica" class="modal">
+        <div class="modal-content">
+          <h4>Modifica Fornitore </h4>
+          <div class="row">
+            <form class="col s12" ng-submit="modificaFornitore(questoFornitore)">
+              <div class="row">
+                <div class="input-field col s2">
+                  <input id="nome_fornitore" type="text" class="validate" ng-model="questoFornitore.nome">
+                  <label for="first_name">Nome Fornitore</label>
+                </div>
+                <div class="input-field col s4">
+                  <textarea id="textarea1" class="materialize-textarea" ng-model="questoFornitore.indirizzo"></textarea>
+                  <label for="textarea1">Indirizzo</label>
+                </div>
+                <div class="input-field col s2">
+                  <input id="prezzo" type="text" class="validate" ng-model="questoFornitore.piva">
+                  <label for="prezzo">P.IVA</label>
+                </div>
+
+
+                <div class="row">
+
+                  <div class="input-field col s3">
+
+                    <button class="btn waves-effect waves-light #64dd17 light-green accent-4" type="submit" name="action">Modifica
+                      <i class="material-icons right">send</i>
+                    </button>
+
+                  </div>
+
+                </div>
+
+            </form>
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-green btn-flat">Chiudi</a>
+          </div>
+        </div>
+
+
+
       </div>
     </div>
-   
-  
-  <script>
-    $('.collapsible').collapsible();
-  </script>
+
+  </div>
+</div>
+
+
+<script>
+  $('.collapsible').collapsible();
+  $('select').formSelect();
+  $('.modal').modal();
+</script>
