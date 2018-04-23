@@ -4,7 +4,17 @@
     <h5>Clienti</h5>
   </div>
   <br>
-
+  <nav id="searchBar">
+    <div class="nav-wrapper">
+         <form>
+           <div class="input-field">
+             <input id="search" type="search" placeholder="ricerca i tuoi clienti " ng-model="search" required>
+             <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+             <i class="material-icons">close</i>
+           </div>
+         </form>
+       </div>
+     </nav>
   <div class="row">
 
     <ul class="collapsible" id="pannelloAggiungi">
@@ -70,7 +80,7 @@
         </thead>
 
         <tbody>
-          <tr ng-repeat="cliente in clienti">
+          <tr ng-repeat="cliente in clienti | filter:search">
             <td>{{cliente._id}}</td>
             <td>{{cliente.nome}}</td>
             <td>{{cliente.indirizzo}}</td>

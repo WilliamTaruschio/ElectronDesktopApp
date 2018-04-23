@@ -4,7 +4,17 @@
             <h5>Fatture di vendita</h5>
         </div>
         <br>
-    
+        <nav id="searchBar">
+            <div class="nav-wrapper">
+                 <form>
+                   <div class="input-field">
+                     <input id="search" type="search" placeholder="ricerca le tue fatture di vendita" ng-model="search" required>
+                     <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                     <i class="material-icons">close</i>
+                   </div>
+                 </form>
+               </div>
+             </nav>
         <div class="row">
     
             <ul class="collapsible" id="pannelloAggiungi">
@@ -71,7 +81,7 @@
                     </thead>
     
                     <tbody>
-                        <tr ng-repeat="prodotto in prodotti">
+                        <tr ng-repeat="prodotto in prodotti|filter:search">
                             <td>{{prodotto.codice}}</td>
                             <td>{{prodotto.nome}}</td>
                             <td>{{prodotto.prezzo}} €</td>
