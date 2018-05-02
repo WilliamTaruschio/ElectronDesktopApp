@@ -7,14 +7,14 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Prodotti = require('./models/Prodotti.js');
 var morgan = require('morgan');
+const Grid = require('gridfs-stream');
 require('electron-reload')(__dirname);
+
 
 var ex = express();
 //bodyparser
-ex.use(bodyParser.urlencoded({
-    extended: true
-}));
-ex.use(bodyParser.json());
+ex.use(bodyParser.json({limit: "50mb"}));
+ex.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 ex.use(morgan('dev'));
 
 var routeProdotti = require('./route/routeProdotti');
@@ -26,8 +26,9 @@ routeClienti(ex, db);
 var routeFornitori = require('./route/routeFornitori');
 routeFornitori(ex, db);
 var routeAcquisto = require('./route/routeAcquisto');
-routeAcquisto(ex, db);
-ex.use('/',routeProdotti);
+routeAcquisto(ex, db); 
+
+
 ex.listen(8080,function () {
     console.log('listening on port 8080...');
 });
@@ -81,15 +82,27 @@ app.on('ready', function () {
     });
 });
 
-//connessione mongoose
 
-mongoose.connect('mongodb://williamTaruschio:taruschio2@ds111124.mlab.com:11124/recusol')
+var routeUploads = require('./route/routeUploads');
+
+//connessione mongoose
+const mongoURI = 'mongodb://williamTaruschio:taruschio2@ds111124.mlab.com:11124/recusol';
+mongoose.connect(mongoURI);
 var db = mongoose.connection;
 //controllo connessione a mongodb
+
 db.once('open', function () {
+    
+    const gfs = Grid(db.db, mongoose.mongo);
+    gfs.collection('Uploads');
+    exports.GFS=gfs;
     console.log('connesso a mongodb');
 });
 db.on('error', function (err) {
     console.log(err);
 });
 
+
+
+routeUploads(ex, db);
+ex.use('/',routeProdotti);

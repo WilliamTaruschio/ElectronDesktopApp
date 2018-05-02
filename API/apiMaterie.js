@@ -11,6 +11,7 @@ exports.setDb = function (extdb) {
 exports.aggiungimateria = function (req, res) {
     log.info("POST materia");
     log.info("req.body ++++  " + JSON.stringify(req.body));
+    
     var nuovoMateria = new Materie({
         nome: req.body.nome,
         icni: req.body.icni,
