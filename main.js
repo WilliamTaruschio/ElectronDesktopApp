@@ -10,7 +10,7 @@ var morgan = require('morgan');
 const Grid = require('gridfs-stream');
 require('electron-reload')(__dirname);
 
-
+ 
 var ex = express();
 //bodyparser
 ex.use(bodyParser.json({limit: "50mb"}));
@@ -55,7 +55,10 @@ app.on('ready', function () {
 
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        show: false
+        show: false,
+        webPreferences: {
+            plugins: true
+          }
     });
 
     //mette l'applicazione a schermo intero 
@@ -103,6 +106,7 @@ db.on('error', function (err) {
 });
 
 
+  
 
 routeUploads(ex, db);
 ex.use('/',routeProdotti);

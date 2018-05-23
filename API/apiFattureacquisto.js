@@ -11,9 +11,11 @@ exports.setDb = function (extdb) {
 exports.aggiungifattura = function (req, res) {
     log.info("POST fattura");
     log.info("req.body ++++  " + JSON.stringify(req.body));
+    log.info("id del file ++++  " + JSON.stringify(req.body._id));
     var nuovoFattura = new Acquisto({
         data: req.body.data,
-        nome: req.body.nome
+        nome: req.body.nome,
+        idfile: req.body._id
     });
 
     nuovoFattura.save(function (err) {

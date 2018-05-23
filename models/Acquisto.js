@@ -9,7 +9,7 @@ var acquistoSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    file:{
+    idfile:{
         type:String
     }
 

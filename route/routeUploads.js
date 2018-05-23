@@ -11,12 +11,13 @@ module.exports = function (app, db, req) {
 
     var api = require('../API/apiUploads.js');
     api.setDb(db);
-
+    
 
     // Create storage engine
     const storage = new GridFsStorage({
         url: 'mongodb://williamTaruschio:taruschio2@ds111124.mlab.com:11124/recusol',
         file: (req, file) => {
+            
             return new Promise((resolve, reject) => {
                 crypto.randomBytes(16, (err, buf) => {
                     if (err) {

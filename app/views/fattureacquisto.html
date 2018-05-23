@@ -44,7 +44,7 @@
                                         <div class="file-path-wrapper">
                                             <input class="file-path validate" type="text" placeholder="inserisci fattura">
                                         </div>
-                                        <p>{{myFile.name}}</p>
+                                     
                                     </div>
 
                                     <div class="input-field col s3">
@@ -84,14 +84,14 @@
 
                 <tbody>
                     <tr ng-repeat="fattura in fatture | filter:search">
-                        <td>{{fattura.codice}}</td>
+                        <td>{{fattura._id}}</td>
                         <td>{{fattura.data}}</td>
                         <td>{{fattura.nome}}</td>
 
                         <td>
                             <!-- Modal Trigger -->
-                            <button data-target="modalfattura" class="btn modal-trigger">Fattura</button>
-
+                            <button  ng-click="idFileFattura(fattura.idfile)" data-target="modalfattura" class="btn modal-trigger">Fattura</button>
+                           
                             <!-- Modal Structure -->
 
                         </td>
@@ -150,8 +150,11 @@
         <div id="modalfattura" class="modal">
             <div class="modal-content">
                 <h4>Fattura</h4>
-                <iframe src="http://docs.google.com/gview?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true" style="width: 1000px; height:400px;"
-                    frameborder="0"></iframe>
+               
+                   
+               <script>void-0</script>
+                <webview src="{{percorsoFile}}" style="width: 1000px; height:400px;"
+                    frameborder="0" type="application/pdf" plugins></webview>
             </div>
             <div class="modal-footer">
                 <a class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -162,7 +165,7 @@
 
         <script>
             $('.collapsible').collapsible();
-            $('select').formSelect();
+            $('select').formSelect(); 
             $('.modal').modal();
             $('.datepicker').datepicker();
         </script>

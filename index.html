@@ -12,8 +12,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-route.js"></script>
-  <script src="http://rawgit.com/danialfarid/ng-file-upload/master/dist/ng-file-upload.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.489/pdf.js"></script>
+  
   <script src="app/app.js"></script>
   <script src="app/controllers/prodottiController.js"></script>
   <script src="app/controllers/materieprimeController.js"></script>
@@ -154,5 +154,10 @@
   var elem = document.querySelector('.collapsible');
  $(elem).collapsible();
  $('.dropdown-trigger').dropdown();
-
+ var shell = require('electron').shell;
+//open links externally by default
+$(document).on('click', 'a[href^="http"]', function(event) {
+    event.preventDefault();
+    shell.openExternal(this.href);
+});
 </script>
